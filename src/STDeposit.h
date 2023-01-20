@@ -2,7 +2,6 @@
 #define P12_TEAM2_STDEPOSIT_H
 
 #include <string>
-#include <utility>
 #include "Deposit.h"
 
 class STDeposit : public Deposit {

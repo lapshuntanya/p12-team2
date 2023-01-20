@@ -13,7 +13,6 @@ int main() {
     printf("\"Petrov Jenya\" %s\n", (bank.findDeposit("Petrov Jenya") != nullptr) ? "found" : "not found");
 
 	bank.removeDeposit("Petrov Vanya");
-	
 
     return 0;
 }

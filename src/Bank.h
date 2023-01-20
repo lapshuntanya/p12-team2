@@ -1,14 +1,9 @@
 #ifndef P12_TEAM2_BANK_H
 #define P12_TEAM2_BANK_H
 
-#include <iostream>
-#include <clocale>
-#include <algorithm>
 #include <vector>
 #include "LTDeposit.h"
 #include "STDeposit.h"
-
-using namespace std;
 
 class Bank
 {

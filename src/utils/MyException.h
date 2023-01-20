@@ -3,7 +3,6 @@
 
 #include <exception>
 #include <string>
-#include <utility>
 
 class MyException : public std::exception {
     std::string m_Message;
@@ -17,18 +16,6 @@ public:
     virtual const char *what() const noexcept {
         return m_Message.c_str();
     }
-
-     /*
-      * Пример использования:
-      *
-        try{
-            if(str.empty())
-                throw MyException("Name in empty\n");
-        }
-        catch (MyException& exception) {
-            std::cout << exception.what();
-        }
-      */
 };
 
 #endif //P12_TEAM2_MYEXCEPTION_H
