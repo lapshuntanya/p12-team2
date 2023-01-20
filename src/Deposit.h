@@ -1,3 +1,6 @@
+#ifndef P12_TEAM2_DEPOSIT_H
+#define P12_TEAM2_DEPOSIT_H
+
 #include <iostream>
 #include <utility>
 #include "utils/MyException.h"
@@ -9,7 +12,7 @@ protected:
 public:
     Deposit() : fullname_("Unknown"), amount_(0) {}
     Deposit(std::string fullname, float amount) : fullname_(std::move(fullname)) { setAmount(amount); }
-    ~Deposit() { std::cout << "Delete Deposit\n"; }
+    virtual ~Deposit() = default;
 
     void setFullname(std::string fullname) { fullname_ = std::move(fullname); }
     void setAmount(float amount) {
@@ -36,8 +39,12 @@ public:
             std::cout << e.what();
         }
 
+        float out = amount_;
         for (int i = 0; i < months; i++) {
-            amount_ * 1.05;
+            out *= 1.05;
         }
+        return out;
     }
 };
+
+#endif //P12_TEAM2_DEPOSIT_H

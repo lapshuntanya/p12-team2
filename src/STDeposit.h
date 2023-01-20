@@ -1,3 +1,6 @@
+#ifndef P12_TEAM2_STDEPOSIT_H
+#define P12_TEAM2_STDEPOSIT_H
+
 #include <string>
 #include <utility>
 #include "Deposit.h"
@@ -6,7 +9,6 @@ class STDeposit : public Deposit {
 public:
     STDeposit() : Deposit() {}
     STDeposit(std::string fullname, float amount) : Deposit(std::move(fullname), amount) {}
-    ~STDeposit() { std::cout << "Delete Deposit\n"; }
 
     float calcAmount(int months) const override {
         try {
@@ -17,8 +19,12 @@ public:
             std::cout << e.what();
         }
 
+        float out = amount_;
         for (int i = 0; i < months; i++) {
-            amount_ * 1.03;
+            out *= 1.03;
         }
+        return out;
     }
 };
+
+#endif //P12_TEAM2_STDEPOSIT_H

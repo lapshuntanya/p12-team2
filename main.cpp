@@ -4,15 +4,15 @@ int main() {
 	Bank bank;
 	bank.setTitle("Mega Bank");
 
-	bank.addDeposit(new LTDeposit("Petrov Petya", -15));
-	bank.addDeposit(new LTDeposit("Petrov Petya", 1500));
+	bank.addDeposit(Deposit("Petrov Petya", -15));
+	bank.addDeposit(LTDeposit("Petrov Petya1", 1500));
 
-	bank.addDeposit(new STDeposit("Petrov Petya", 1000));
+	bank.addDeposit(STDeposit("Petrov Vanya", 1000));
 
-	bank.findDeposit("Petrov Petya1");
-	bank.findDeposit("Petrov Petya");
+    printf("\"Petrov Petya1\" %s\n", (bank.findDeposit("Petrov Petya1") != nullptr) ? "found" : "not found");
+    printf("\"Petrov Jenya\" %s\n", (bank.findDeposit("Petrov Jenya") != nullptr) ? "found" : "not found");
 
-	bank.removeDeposit("Petrov Petya");
+	bank.removeDeposit("Petrov Vanya");
 	
 
     return 0;

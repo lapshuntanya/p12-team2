@@ -1,7 +1,9 @@
-#pragma once
+#ifndef P12_TEAM2_BANK_H
+#define P12_TEAM2_BANK_H
+
 #include <iostream>
 #include <clocale>
-#include <utility>
+#include <algorithm>
 #include <vector>
 #include "LTDeposit.h"
 #include "STDeposit.h"
@@ -24,13 +26,18 @@ public:
 
     void setTitle(std::string title) { title_ = std::move(title); }
 
-    void addDeposit(const Deposit* deposit) {
+    void addDeposit(const Deposit& deposit) {
         deposits_.emplace_back(deposit);
     }
     void removeDeposit(const std::string& fullname) {
         deposits_.erase(std::remove_if(deposits_.begin(), deposits_.end(), [fullname](const Deposit& dep) -> bool {return dep.getFullname() == fullname;}), deposits_.end());
     }
-    const Deposit& findDeposit(const std::string& fullname) {
-        return *(std::find_if(deposits_.begin(), deposits_.end(),[fullname](const Deposit& dep) -> bool {return dep.getFullname() == fullname;}));
+    Deposit* findDeposit(const std::string& fullname) {
+        auto res = std::find_if(deposits_.begin(), deposits_.end(),[fullname](const Deposit& dep) -> bool {return dep.getFullname() == fullname;});
+        if(res != deposits_.end())
+            return &(*(res));
+        return nullptr;
     }
 };
+
+#endif //P12_TEAM2_BANK_H
