@@ -1,0 +1,3 @@
+C:/Users/Animepdf/p12-team2/cmake-build-debug/CMakeFiles/p12_team2.dir
+C:/Users/Animepdf/p12-team2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Animepdf/p12-team2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
