@@ -23,9 +23,9 @@ public:
       *
         try{
             if(str.empty())
-                throw MobileException("Name in empty, setting it to default\n");
+                throw MyException("Name in empty\n");
         }
-        catch (MobileException& exception) {
+        catch (MyException& exception) {
             std::cout << exception.what();
         }
       */
