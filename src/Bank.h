@@ -3,7 +3,8 @@
 #include <clocale>
 #include <utility>
 #include <vector>
-#include "Deposit.h"
+#include "LTDeposit.h"
+#include "STDeposit.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ public:
 
     void setTitle(std::string title) { title_ = std::move(title); }
 
-    void addDeposit(const Deposit& deposit) {
+    void addDeposit(const Deposit* deposit) {
         deposits_.emplace_back(deposit);
     }
     void removeDeposit(const std::string& fullname) {
