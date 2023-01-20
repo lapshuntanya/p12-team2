@@ -1,42 +1,35 @@
 #pragma once
 #include <iostream>
 #include <clocale>
+#include <utility>
 #include <vector>
+#include "Deposit.h"
+
 using namespace std;
 
-class Bankk
+class Bank
 {
 private:
-	char Title[50];
-	float AllSum;
-	int NOfDeposit;
+	std::string title_;
+    std::vector<Deposit> deposits_;
 public:
-	Bankk() {
-		AllSum = 0;
-		NOfDeposit = 0;
-	}
-	Bankk(char title, float allsum, int nofdeposit) {
-		Title[50] = title;
-		AllSum = allsum;
-		NOfDeposit = nofdeposit;
-	}
+    Bank() : title_("Super Bank"), deposits_() {}
+    Bank(std::string title) : title_(std::move(title)), deposits_() {}
 
-	void setTitle(char title) {
-		Title[50] = title;
-	}
-	char getTitle()const {
-		return Title[50];
-	}
-	void setAllSum(float allsum) {
-		AllSum = allsum;
-	}
-	float getAllSum()const {
-		return AllSum;
-	}
-	void setNOfDeposit(int nofdeposit) {
-		NOfDeposit = nofdeposit;
-	}
-	int getNofDeposit()const {
-		return NOfDeposit;
-	}
+    std::string getTitle() const { return title_; }
+	float getTotalAmount() const { float out = 0; for (const Deposit &deposit: deposits_) out+=deposit.getAmount(); }
+	int getTotalDeposits() const { return deposits_.size(); }
+    std::vector<Deposit> getDeposits() const { return deposits_; }
+
+    void setTitle(std::string title) { title_ = std::move(title); }
+
+    void addDeposit(const Deposit& deposit) {
+        deposits_.emplace_back(deposit);
+    }
+    void removeDeposit(const std::string& fullname) {
+        deposits_.erase(std::remove_if(deposits_.begin(), deposits_.end(), [fullname](const Deposit& dep) -> bool {return dep.getFullname() == fullname;}), deposits_.end());
+    }
+    const Deposit& findDeposit(const std::string& fullname) {
+        return *(std::find_if(deposits_.begin(), deposits_.end(),[fullname](const Deposit& dep) -> bool {return dep.getFullname() == fullname;}));
+    }
 };
