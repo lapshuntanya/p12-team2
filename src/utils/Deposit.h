@@ -21,7 +21,7 @@ public:
 
     virtual float calcAmount(int months) const { 
         for (int i = 0; i < months; i++) {
-            amount * 1.03;
+            amount * 1.05;
         }
     }
 }
