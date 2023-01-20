@@ -17,7 +17,7 @@ public:
     Bank(std::string title) : title_(std::move(title)), deposits_() {}
 
     std::string getTitle() const { return title_; }
-	float getTotalAmount() const { float out = 0; for (const Deposit &deposit: deposits_) out+=deposit.getAmount(); }
+	float getTotalAmount() const { float out = 0; for (const Deposit &deposit: deposits_) out+=deposit.getAmount(); return out; }
 	int getTotalDeposits() const { return deposits_.size(); }
     std::vector<Deposit> getDeposits() const { return deposits_; }
 
